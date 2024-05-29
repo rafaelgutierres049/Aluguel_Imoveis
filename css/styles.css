@@ -1,0 +1,540 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slideIn{
+    from {
+      margin-left: -100%;
+    }
+  
+    to {
+      margin-left: 5rem;
+    }
+}
+@keyframes slideInR{
+    from{
+        margin-right: -100%;
+    }
+    to{
+        margin-left: 5rem;
+    }
+}
+
+
+/*------------------------Configurações Gerais--------------------------------*/
+
+a{
+    text-decoration: none; color: black
+}
+button{
+    font-family: 'Montserrat';
+}
+a:hover{
+    color: #a3a375;
+}
+body{
+    background-color: white;margin: auto;font-family: 'Montserrat';
+}
+input{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*Barra de rolagem*/
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7a7878;border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #c0c0c0;
+}
+
+/*-------------------------CABEÇALHO-----------------------*/
+
+.cabecalho{
+    width: 100%;
+    height: 15dvh;
+    background-color: white;
+    font-weight: 700;
+    position: fixed;
+    top: 0;
+    box-shadow: 0px 5px 5px rgba(161, 161, 161, 0.3);
+    z-index: 1000;
+    
+}
+.menu {
+    height:15dvh;
+    width:50%;
+    gap:5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    background-color: #4d6b77;
+}
+
+
+
+/*-----------------------CONTEÚDO GERAL---------------------*/
+
+.conteudo{
+    margin-top: 15dvh;
+}
+.a_home{
+    background-color: white;
+    color: black;
+    border-radius: 1rem;
+    font-weight: 600;
+}
+
+/*LOGIN-----------------------------------------------------*/
+.login{
+    background-color: #7a7878;
+}
+
+/*Página HOME-----------------------------------------------*/
+.pesquisa{
+    background-image: url('../images/Fundo_Cadastro.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+}
+.pesquisa form {
+    background: white;
+    height: 20%;
+    padding: 3%;
+    border-radius: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 30%; /* Espaçamento entre os elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+
+.pesquisa form input[type="text"],
+.pesquisa form input[type="date"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 100%;
+}
+
+.pesquisa form input[type="submit"] {
+    background-color: #a3a375;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 3s ease;
+}
+
+.pesquisa form input[type="submit"]:hover {
+    background-color: #dedec1;
+    transform: scale(1.02);
+}
+
+.pesquisa form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.a_imovel {
+    height: 100%;
+    width: 25%;
+    display: block;
+    transition: transform 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.a_imovel:hover {
+    transform: scale(1.05); 
+    color: white;
+}
+
+.imoveis_img {
+    width: 100%;
+    height: 75%;
+    border-radius: 10px 10px 0 0;
+}
+
+.imoveis_info{
+    background-color:#a3a375;
+    padding: 0.25rem 0 0.25rem 0;
+    width:100%;
+    height:25%;
+    border-radius:0 0 1rem 1rem;
+    display:flex;
+    flex-direction:column;
+    gap:30%;
+    text-align:center;
+    font-weight:600
+}
+.imoveis_info2{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: center;
+    text-align: center;
+}
+.imoveis_info:hover{
+    color:white
+}
+
+
+
+
+
+
+.prop_imagem{
+    border:1px solid white;
+    width:100%;
+    background-image: url('../images/Imagem_Prop_Home.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    filter:saturate(0%);
+    background-color: aliceblue;
+    transition: color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+
+}
+#proprietario_home {
+    color:white;
+    display: flex;
+    flex-direction:row; 
+    text-align:center;
+    background-color:#a3a375;
+    height: 100%;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3) ;
+    animation: fadeIn 3s normal;
+    transition:  transform 3s ease;
+
+
+    
+}
+
+.prop_imagem:hover{
+    filter: saturate(100%);
+    transform: scale(1.05);
+
+}
+
+
+.lista{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5dvh;
+    list-style-type: none;
+    animation: fadeIn 5s;
+}
+.lista li {
+    background-color: #a3a375;
+    color: white;
+    padding: 4% 0 4% 0;
+    width: 200%;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+}
+.lista li:hover{
+    transform: scale(1.15);
+}
+.institucional_home {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 3s normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5rem 0 5rem;
+
+}
+.institucional_home span{
+    font-size: 1.1rem;
+}
+
+
+
+/*Página de Proprietário------------------------------------*/
+.conteudo_prop {
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/Fundo_Proprietario.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    animation: fadeIn 2s normal;
+}
+
+.subtitulo{
+    margin:3rem 5rem 0 5rem;
+    animation: slideIn 2s normal
+}
+
+.divulgacao_2{
+    width:85%;
+    height: 85%;
+    border-radius:3rem;
+    animation: fadeIn 5s normal;
+    border: 5px solid #a3a375;
+
+}
+
+/*Página de Cadastro------------------------------------*/
+
+
+.div_cadastro{
+    background-color: white;
+    border-radius:3rem;
+    height:100%;
+    padding: 0 1rem 0 1rem;
+    box-shadow: 0px 0px 15px rgba(161, 161, 161, 0.3) ;  
+    text-align:center;
+    animation: fadeIn 1.5s normal;
+}
+.input_cadastro{
+    border:0;padding:0.5rem;transition: padding 0.3s ease, font-size 0.3s ease;font-weight:600;
+    border-radius: 1rem;background-color:#a3a375;font-size: 1rem; margin: 0 auto
+}
+.input_cadastro:hover {
+    padding: 0.6rem;font-size: 1.1rem;color: black;
+}
+.input_form{
+    border-radius: 1rem;border:2px solid #a3a375;
+}
+
+/*Página Sobre------------------------------------------*/
+.sobre {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #aaadaf, #4d6b77); /* Gradiente do azul claro ao verde menta */
+    color: black;
+    display: flex;
+    animation: fadeIn 2s normal;
+}
+
+
+.sobre_2{
+    margin:0rem 5rem 2rem 5rem;
+    text-align:center;
+    height:10dvh;
+    animation: fadeIn 3s normal;
+}
+
+.mvv{
+    background-color: white;
+    width:30%;
+    border-radius:1rem;
+    color: white;
+    text-align: center;
+    animation: fadeIn 3s normal;
+    height:80%;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    padding: 2%;
+    transition:all 0.3s ease
+
+}
+.mvv:hover{
+    background-color: #a3a375;
+    color: black;
+    transform: scale(1.05);
+}
+.mvv h2{
+    color:black
+}
+.lista_s{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    list-style-type: none;
+}
+.lista_s li {
+    background-color: white;
+    color: #a3a375;
+    padding: 4% 0 4% 0;
+    text-align: center;
+    border-radius: 1rem;
+    transition: padding 0.3s ease;
+}
+/*-------------------------RODAPÉ-----------------------*/
+
+.rodape{
+    width: 100%;
+    background-color: #a3a375;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.rodape div{
+    padding: 1rem;
+}
+.rodape_itens{
+    display: flex;
+    flex-direction: row;
+    justify-content:  center; 
+    gap: 3rem;
+    color: white;
+    font-weight: 500;
+}
+.rodape span{
+    color: white;
+    font-size: 0.7rem;
+}
+.rodape_itens a{
+    color: white;
+}
+.rodape_itens a:hover{
+    color: #dedec1;
+}
+
+.card_cliente{
+    height:50%;
+    background: linear-gradient(45deg, #aaadaf, #4d6b77);
+    border-radius:3dvh;
+    transition: transform 0.3s ease;
+}
+.card_cliente:hover{
+    transform: scale(105%);
+}
+.card_funcionalidade{
+    height:90%;
+    width:90%;
+    border-radius:3dvh;
+    transition:  transform 0.3s ease;
+}
+.card_funcionalidade:hover{
+    transform: scale(1.1);
+}
+
+/*OUTROS*/
+
+.botao_login{
+    background-color:black;
+    padding:0.5rem;
+    border-radius:2rem;
+    color:#a3a375;
+}
+.botao_login:hover{
+    background-color: #dedec1;
+    color: black;
+}
+.botao_primario{
+    background-color: #a3a375;
+    font-weight: 600;
+    font-size: 1rem;
+    border:0;
+    color: black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+
+}
+.botao_secundario{
+    background-color: #a3a375;
+    font-weight: 600;
+    font-size: 1rem;
+    border:0;
+    color: black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.botao_primario:hover{
+    transform: scale(115%);
+    cursor: pointer;
+}
+.botao_secundario:hover{
+    background-color: #dedec1;
+    color: black;
+}
+
+.botao_terciario{
+    font-weight: 600;
+    font-size: 1rem;
+    border:0;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    background-color: white;
+    color: #a3a375;
+    transition: font-size 0.3s ease, color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+
+}
+.botao_terciario:hover{
+    background-color: black;
+    color: #dedec1;
+    font-size: 1rem;
+    padding: 0.8rem;
+    transform: translateY(-1rem);
+}
+
+.background_image_cover{
+    background-position: center;
+    background-size: cover;
+}
+.container {
+    height: 85dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 2s;
+}
+.container_objetos{
+    width:90%;
+    height:90%;
+    display:flex;
+    align-self:center;
+    justify-content:center;
+}
+.container_objetos_2{
+    height:100%;
+    width:50%;
+    display:flex;
+}
+.centralizar_column{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center
+}
+.centralizar_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
