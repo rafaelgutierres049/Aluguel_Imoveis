@@ -47,7 +47,9 @@
                             
                         </div> 
                         <div class="centralizar_column" style="height:33%;">
-                            <form style="font-weight:600;background-color:white;padding:1rem;border-radius:1rem" class="centralizar_row" action="">
+                            <form style="font-weight:600;background-color:white;padding:1rem;border-radius:1rem" class="centralizar_row" action="acoes/reserva_imovel.php" method="post">
+                                <input type="hidden" name="id_imovel" value="<?php echo $imovel->id_imovel; ?>">
+                                <input type="hidden" name="num_hospedes" value="<?php echo $imovel->num_hospedes; ?>">
                                 <label for="checkin">Check-in</label>
                                 <input type="date" name="checkin" id="checkin">
                                 <label for="checkout">Check-out</label>

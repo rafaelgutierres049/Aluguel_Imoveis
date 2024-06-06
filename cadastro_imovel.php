@@ -24,6 +24,7 @@ session_start();
                         <div class="div_cadastro centralizar_row">
                             <form style="font-weight:600" action="acoes/inserir.php" method="post" enctype="multipart/form-data">
                                 Título:<br><input class="input_form" type="text" name="titulo"><br>
+                                <input type="hidden" name="id_usuario" value="<?php echo htmlspecialchars($_SESSION['id_usuario']); ?>">
                                 Localização:<br> <input class="input_form"type="text" name="localizacao"><br>
                                 Valor:<br> <input class="input_form" type="number" name="preco"><br>
                                 Quartos:<br> <input class="input_form" type="number" name="num_quartos"><br>

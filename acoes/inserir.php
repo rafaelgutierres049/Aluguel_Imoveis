@@ -2,6 +2,7 @@
 include 'conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_usuario = $_POST['id_usuario'];
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
     $localizacao = $_POST['localizacao'];
@@ -20,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imageData = file_get_contents($fileTmpPath);
         
         // Insere os dados no banco de dados
-        $sql = "INSERT INTO imovel (titulo, descricao, localizacao, preco, num_quartos, num_hospedes, imagem) 
-                VALUES (:titulo, :descricao, :localizacao, :preco, :num_quartos, :num_hospedes, :imagem)";
+        $sql = "INSERT INTO imovel (titulo, descricao, localizacao, preco, num_quartos, num_hospedes, imagem, id_usuario) 
+                VALUES (:titulo, :descricao, :localizacao, :preco, :num_quartos, :num_hospedes, :imagem, :id_usuario)";
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':titulo', $titulo);
         $stmt->bindParam(':descricao', $descricao);
@@ -29,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':preco', $preco);
         $stmt->bindParam(':num_quartos', $num_quartos);
         $stmt->bindParam(':num_hospedes', $num_hospedes);
-        $stmt->bindParam(':imagem', $imageData, PDO::PARAM_LOB); // Parametrizando como Large Object (LOB)
+        $stmt->bindParam(':imagem', $imageData, PDO::PARAM_LOB);
+        $stmt->bindParam(':id_usuario', $id_usuario);
         
         if ($stmt->execute()) {
             header('Location: ../cadastro_imovel.php');

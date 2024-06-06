@@ -538,3 +538,12 @@ input{
     justify-content: center;
     align-items: center;
 }
+.reservas_cliente{
+    width:90%;
+    height:25%;
+    background-color:#a3a375;border-radius:2dvh;
+    transition: transform 0.3s ease;
+}
+.reservas_cliente :hover{
+    transform: scale(1.02);
+}
