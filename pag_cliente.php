@@ -105,7 +105,10 @@
                         <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($imovel->imagem); ?>" alt="Imagem do Imóvel">
                         <div class="details">
                             <div style="height:60%">
-                                <h4><?php echo $imovel->titulo; ?></h4>
+                                <a href="reserva.php?id=<?php echo $imovel->id_imovel; ?>">
+                                    <h4><?php echo $imovel->titulo; ?></h4>
+                                </a>
+                                
                                 
                             </div>
                             <div class="centralizar_row" style="height:40%;gap:1dvw">

@@ -32,7 +32,7 @@
     <div class="conteudo">
         <div class="container">
         <h2><?php echo $imovel->titulo?></h2>
-
+        
             <div class="container_objetos">
                 
                 <div class="container_objetos_2 centralizar_column">

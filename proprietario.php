@@ -48,7 +48,7 @@
 
                     
                     <div class="container_objetos_2 centralizar_column">
-                        <div style="background-image: url('images/rentabilidade.jpg')" class="divulgacao_2 background_image_cover">
+                        <div style="background-image: url('images/contrato.jpg')" class="divulgacao_2 background_image_cover">
                         
                         </div>
                     </div>
