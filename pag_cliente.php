@@ -53,7 +53,7 @@
                     
                     <div class="centralizar_column" style="color:white;font-weight:600">
                         <p>Imóveis Cadastrados: <?php echo $quantidade_imoveis; ?></p>
-                        <p>Reservas feitas em seus imóveis: <?php echo $quantidade_reservas; ?></p>
+                        <p>Reservas feitas: <?php echo $quantidade_reservas; ?></p>
                     </div>
                     <form style="width:50%" action="acoes/sair.php">
                         <button style="width:100%;background-color:white" class="botao_primario">Sair</button>
@@ -106,7 +106,7 @@
                         <div class="details">
                             <div style="height:60%">
                                 <a href="reserva.php?id=<?php echo $imovel->id_imovel; ?>">
-                                    <h4><?php echo $imovel->titulo; ?></h4>
+                                    <h4 style="color:white"><?php echo $imovel->titulo; ?></h4>
                                 </a>
                                 
                                 
