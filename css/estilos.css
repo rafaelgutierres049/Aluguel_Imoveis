@@ -15,7 +15,7 @@
     }
   
     to {
-      margin-left: 5rem;
+      margin-left: 0%;
     }
 }
 @keyframes slideInR{
@@ -23,7 +23,7 @@
         margin-right: -100%;
     }
     to{
-        margin-left: 5rem;
+        margin-right: 0%;
     }
 }
 
@@ -45,6 +45,12 @@ body{
 input{
     font-family: 'Montserrat', sans-serif;
 }
+.fadeIn{
+    animation: fadeIn 3s normal;
+}
+.slideIn{
+    animation: slideIn 2s normal;
+}
 
 /*Barra de rolagem*/
 
@@ -64,7 +70,7 @@ input{
 
 .cabecalho{
     width: 100%;
-    height: 15dvh;
+    height: 15vh;
     background-color: white;
     font-weight: 700;
     position: fixed;
@@ -160,46 +166,50 @@ input{
 }
 
 
-
-.a_imovel {
-    height: 100%;
-    width: 25%;
-    display: block;
-    transition: transform 0.3s ease; /* Adiciona uma transição suave */
-}
-
-.a_imovel:hover {
-    transform: scale(1.05); 
-    color: white;
-}
-
-.imoveis_img {
-    width: 100%;
-    height: 75%;
-    border-radius: 10px 10px 0 0;
-}
-
-.imoveis_info{
-    background-color:#a3a375;
-    padding: 0.25rem 0 0.25rem 0;
-    width:100%;
-    height:25%;
-    border-radius:0 0 1rem 1rem;
-    display:flex;
-    flex-direction:column;
-    gap:30%;
-    text-align:center;
-    font-weight:600
-}
-.imoveis_info2{
+.imoveis_container {
     display: flex;
-    flex-direction: row;
-    gap: 3rem;
-    justify-content: center;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: 1%;
 }
-.imoveis_info:hover{
-    color:white
+
+.imovel_card {
+    width: 20vw;
+    height: 45vh;
+    background-color: white;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 2px solid #a3a375;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    font-weight:500;
+    color: black;
+}
+
+.imovel_card:hover {
+    transform: scale(1.05);
+    color:#a3a375;
+}
+
+.imovel_card img {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.imovel_info {
+    height:30%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.imovel_info div {
+    margin-bottom: 5px;
 }
 
 
@@ -506,7 +516,7 @@ input{
     background-size: cover;
 }
 .container {
-    height: 85dvh;
+    height: 85vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -546,4 +556,72 @@ input{
 }
 .reservas_cliente :hover{
     transform: scale(1.02);
+}
+
+.form-reserva {
+    width: 70%;
+
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+.form-reserva label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.form-reserva input[type="date"]{
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-reserva input[type="submit"] {
+    background-color: #4CAF50;
+    width:100%;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-reserva input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Tablets e dispositivos menores */
+@media screen and (max-width: 768px) {
+    h1{
+        font-size:20px
+    }
+    h2{
+        font-size:15px
+    }
+    h3{
+        font-size:15px
+    }
+    h2{
+        font-size:15px
+    }
+    form{
+        font-size:15px
+    }
+    .form-reserva{
+        font-size: 10px;
+    }
+    .cabecalho{
+        font-size: 10px;
+    }
+    .cabecalho img{
+        height: 40px;
+    }
+    .imovel_card {
+        width: 45vw;
+    }
 }

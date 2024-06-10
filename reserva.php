@@ -25,38 +25,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php include "secoes/head.php"?>
+
 <body>
 
     <?php include "secoes/cabecalho.php"?>
     <div class="conteudo">
         <div class="container">
+        <h2><?php echo $imovel->titulo?></h2>
+
             <div class="container_objetos">
+                
                 <div class="container_objetos_2 centralizar_column">
-                    <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($imovel->imagem); ?>" alt="Imagem" width="90%" height="90%">
+                    <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($imovel->imagem); ?>" alt="Imagem" width="90%" height="90%" style="border-radius:2dvh">
 
                 </div>
                 <div class="container_objetos_2 centralizar_column">
-                    <div class="centralizar_column" style="background-color:#a3a375;height:90%;width:90%;">
-                        <div class="centralizar_column" style="height:33%">
-                            <h1><?php echo $imovel->titulo?></h1>
-                            <h2><?php echo $imovel->localizacao?></h2>
-                        </div> 
-                        <div class="centralizar_column" style="height:33%">
-                        <h1 style="background-color:lime;color:white;padding:10%;border-radius:2dvh">R$<?php echo $imovel->preco ?>,00</h1>
+                    <div style="background-color:#a3a375;height:90%;width:90%;border-radius:2dvh">
+                        <div class="centralizar_row" style="heigth:20%">
+                            <div class="centralizar_column container_objetos_2">
+                                <h2 style="color:white"><?php echo $imovel->localizacao?></h2>
+                            </div>
+                            <div class="centralizar_column container_objetos_2">
+                                <h1 style="background-color:lime;color:white;padding:3%;border-radius:2dvh;width:auto;">R$<?php echo $imovel->preco ?>,00</h1>
 
+                            </div>
                             
-                        </div> 
-                        <div class="centralizar_column" style="height:33%;">
-                            <form style="font-weight:600;background-color:white;padding:1rem;border-radius:1rem" class="centralizar_row" action="acoes/reserva_imovel.php" method="post">
-                                <input type="hidden" name="id_imovel" value="<?php echo $imovel->id_imovel; ?>">
-                                <input type="hidden" name="num_hospedes" value="<?php echo $imovel->num_hospedes; ?>">
+                        </div>
+                          
+                        <div class="centralizar_column">
+                            <form class="form-reserva centralizar_column" action="acoes/reserva_imovel.php" method="post">
+                                <input type="hidden" name="id_imovel" value="<?php echo htmlspecialchars($imovel->id_imovel); ?>">
+                                <input type="hidden" name="num_hospedes" value="<?php echo htmlspecialchars($imovel->num_hospedes); ?>">
+                                
                                 <label for="checkin">Check-in</label>
-                                <input type="date" name="checkin" id="checkin">
+                                <input class="input-data" type="date" name="checkin" id="checkin" required>
+                                
                                 <label for="checkout">Check-out</label>
-                                <input type="date" name="checkout" id="checkout">
-                                <input type="submit" value="Reservar">
+                                <input class="input-data" type="date" name="checkout" id="checkout" required>
+                                
+                                <input class="btn-reservar" type="submit" value="Reservar">
                             </form>
                         </div>
+                    
+                        
                     
 
                     </div>

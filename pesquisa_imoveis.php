@@ -41,20 +41,23 @@ session_start();
                 <h2>Resultado da pesquisa</h2>
                 <div style="height: 70%; width: 100%;gap:1%" class="centralizar_row">
                     <?php foreach ($imoveis as $imovel):?>
-                        <a class="a_imovel" href="reserva.php?id=<?php echo $imovel['id_imovel']; ?>">
+                        <a class="imovel_card" href="reserva.php?id=<?php echo $imovel['id_imovel']; ?>">
                     
 
-                            <div class="imoveis_img">
+                            <div style="height:70%;width:100%">
                                 <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($imovel['imagem']); ?>" style="border-radius:1rem 1rem 0 0" alt="Imagem" width="100%" height="100%">
                             </div>
-                            <div class="imoveis_info">
-                                <div><?php echo $imovel['localizacao'] ?></div>
-                                <div class="imoveis_info2">
-                                    <div>H: <?php echo $imovel['num_hospedes'] ?></div>
-                                    <div>Q: <?php echo $imovel['num_quartos'] ?></div>
-                                    <div style="color:#6FFF40">R$<?php echo $imovel['preco'] ?></div>
+                            <div class="imovel_info centralizar_column">
+                                <div style="margin:5%" class="centralizar_column">
+                                    <div style="font-weight:600"><?php echo $imovel['localizacao'] ?></div>
+                                    <div style="gap:2dvw" class="centralizar_row">
+                                        <div>H: <?php echo $imovel['num_hospedes'] ?></div>
+                                        <div>Q: <?php echo $imovel['num_quartos'] ?></div>
+                                        <div style="color:#258b03; font-weight:700">R$<?php echo $imovel['preco'] ?></div>
 
+                                    </div>
                                 </div>
+                                
                             </div>
 
 
