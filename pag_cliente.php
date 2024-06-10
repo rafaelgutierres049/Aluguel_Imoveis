@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-    // Verifica se o usuário está logado
     if (!isset($_SESSION['nome_usuario'])) {
         header('Location: acoes/login.php');
         exit();
@@ -10,10 +9,12 @@
     $page = "CZ - Minha Conta";
     $id_usuario = $_SESSION['id_usuario'];
 
+<<<<<<< HEAD
     // Inclua o arquivo de conexão com o banco de dados
+=======
+>>>>>>> 537aa81a9a8a47c1d8d75f79906cff52e7463f2d
     include 'acoes/conexao.php';
 
-    // Consulta para obter as reservas do usuário
     $sql_reservas = "
         SELECT reserva.id_reserva, reserva.data_checkin, reserva.data_checkout, reserva.num_hospedes, imovel.titulo, imovel.localizacao
         FROM reserva
@@ -23,7 +24,10 @@
     $consulta_reservas = $conexao->prepare($sql_reservas);
     $consulta_reservas->execute([':id_usuario' => $id_usuario]);
 
+<<<<<<< HEAD
     // Consulta para obter os imóveis do usuário e a quantidade de reservas para cada imóvel
+=======
+>>>>>>> 537aa81a9a8a47c1d8d75f79906cff52e7463f2d
     $sql_imoveis = "
         SELECT imovel.*, COUNT(reserva.id_reserva) AS total_reservas
         FROM imovel
@@ -34,10 +38,15 @@
     $consulta_imoveis = $conexao->prepare($sql_imoveis);
     $consulta_imoveis->execute([':id_usuario' => $id_usuario]);
 
+<<<<<<< HEAD
     // Contar a quantidade de imóveis
     $quantidade_imoveis = $consulta_imoveis->rowCount();
 
     // Contar a quantidade de reservas
+=======
+    $quantidade_imoveis = $consulta_imoveis->rowCount();
+
+>>>>>>> 537aa81a9a8a47c1d8d75f79906cff52e7463f2d
     $quantidade_reservas = $consulta_reservas->rowCount();
 ?>
 
@@ -45,6 +54,62 @@
 <html lang="pt-br">
 
 <?php include 'secoes/head.php'?>
+<<<<<<< HEAD
+=======
+<style>
+    .item_cliente {
+        width: 15vw;
+        height: 25vh;
+        position: relative;
+        border: 1px solid black;
+        border-radius: 2dvh;
+        overflow: hidden; 
+        transition: transform 0.3s ease;
+    }
+
+    .item_cliente img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 2dvh;
+    }
+
+    .details {
+        position: absolute;
+        height:25vh;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top:0; 
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        box-sizing: border-box;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .item_cliente:hover{
+        transform: scale(1.05);
+    }
+    .item_cliente:hover .details {
+        opacity: 1;
+    }
+    .submit{
+        background-color:#a3a375; color:white;border-radius:1rem;border:0;font-weight:600;padding:1dvh;cursor:pointer;
+        transition: transform 0.3s ease;
+    }
+    .submit:hover{
+        transform:scale(1.05);
+    }
+    .item_reserva_cliente{
+        background-color:white;border:5px solid #dedec1;border-radius:2dvh;width:60%;transition:transform 0.3s ease
+    }
+    .item_reserva_cliente:hover{
+        transform:scale(1.05);
+        background:#dedec1;
+    }
+</style>
+>>>>>>> 537aa81a9a8a47c1d8d75f79906cff52e7463f2d
 
 <body>
     <?php include "secoes/cabecalho.php"; ?>
