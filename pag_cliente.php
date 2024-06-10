@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-    // Verifica se o usuário está logado
     if (!isset($_SESSION['nome_usuario'])) {
         header('Location: acoes/login.php');
         exit();
@@ -10,10 +9,8 @@
     $page = "CZ - Minha Conta";
     $id_usuario = $_SESSION['id_usuario'];
 
-    // Include database connection file here
     include 'acoes/conexao.php';
 
-    // Consulta para obter as reservas do usuário
     $sql_reservas = "
         SELECT reserva.id_reserva, reserva.data_checkin, reserva.data_checkout, reserva.num_hospedes, imovel.titulo, imovel.localizacao
         FROM reserva
@@ -23,14 +20,19 @@
     $consulta_reservas = $conexao->prepare($sql_reservas);
     $consulta_reservas->execute([':id_usuario' => $id_usuario]);
 
-    // Consulta para obter os imóveis do usuário
     $sql_imoveis = "
-        SELECT *
+        SELECT imovel.*, COUNT(reserva.id_reserva) AS total_reservas
         FROM imovel
+        LEFT JOIN reserva ON imovel.id_imovel = reserva.id_imovel
         WHERE imovel.id_usuario = :id_usuario
+        GROUP BY imovel.id_imovel
     ";
     $consulta_imoveis = $conexao->prepare($sql_imoveis);
     $consulta_imoveis->execute([':id_usuario' => $id_usuario]);
+
+    $quantidade_imoveis = $consulta_imoveis->rowCount();
+
+    $quantidade_reservas = $consulta_reservas->rowCount();
 ?>
 
 <!DOCTYPE html>
@@ -39,14 +41,13 @@
 <?php include 'secoes/head.php'?>
 <style>
     .item_cliente {
-        width: 15dvw;
-        height: 25dvh;
+        width: 15vw;
+        height: 25vh;
         position: relative;
         border: 1px solid black;
         border-radius: 2dvh;
         overflow: hidden; 
         transition: transform 0.3s ease;
-
     }
 
     .item_cliente img {
@@ -58,6 +59,7 @@
 
     .details {
         position: absolute;
+        height:25vh;
         bottom: 0;
         left: 0;
         right: 0;
@@ -89,9 +91,7 @@
         transform:scale(1.05);
         background:#dedec1;
     }
-    
 </style>
-
 
 <body>
     <?php include "secoes/cabecalho.php"; ?>
@@ -102,7 +102,10 @@
                 <div style="gap:5%" class="card_cliente container_objetos_2 centralizar_column ">
                     <h1 style="color:white"><?php echo htmlspecialchars($_SESSION['nome_usuario']); ?></h1>
                     
-                    
+                    <div class="centralizar_column" style="color:white;font-weight:600">
+                        <p>Imóveis Cadastrados: <?php echo $quantidade_imoveis; ?></p>
+                        <p>Reservas feitas em seus imóveis: <?php echo $quantidade_reservas; ?></p>
+                    </div>
                     <form style="width:50%" action="acoes/sair.php">
                         <button style="width:100%;background-color:white" class="botao_primario">Sair</button>
                     </form>
@@ -152,16 +155,17 @@
                     <div class="item_cliente">
                         <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($imovel->imagem); ?>" alt="Imagem do Imóvel">
                         <div class="details">
-                            <div style="height:70%">
-                                <h4><?php echo $imovel->titulo?></h4>
+                            <div style="height:60%">
+                                <h4><?php echo $imovel->titulo; ?></h4>
+                                
                             </div>
-                            <div style="height:30%">
+                            <div class="centralizar_row" style="height:40%;gap:1dvw">
                                 <form action="acoes/exclui_imovel.php" method="post">
                                     <input type="hidden" name="id_imovel" value="<?php echo htmlspecialchars($imovel->id_imovel); ?>">
                                     <input class="submit" type="submit" value="Excluir">
                                 </form>
+                                <p style="color:white;font-weight:600"><?php echo "Reservas: " . $imovel->total_reservas; ?></p>
                             </div>
-                            
                         </div>
                     </div>
                 <?php } ?>
