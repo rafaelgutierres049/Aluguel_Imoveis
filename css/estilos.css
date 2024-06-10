@@ -560,23 +560,20 @@ input{
 
 .form-reserva {
     width: 70%;
-
-    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
+    gap:1dvh
 }
 .form-reserva label {
     display: block;
-    margin-bottom: 8px;
     font-weight: bold;
 }
 .form-reserva input[type="date"]{
     width: 90%;
     padding: 10px;
-    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -587,12 +584,13 @@ input{
     cursor: pointer;
     font-weight: bold;
     padding: 10px;
-    margin-bottom: 15px;
+    transition: transform 0.3s ease;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 .form-reserva input[type="submit"]:hover {
     background-color: #45a049;
+    transform: scale(1.03);
 }
 .item_cliente {
     width: 15vw;

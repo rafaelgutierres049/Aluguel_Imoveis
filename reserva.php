@@ -64,7 +64,12 @@
                                 <input class="input-data" type="date" name="checkout" id="checkout" required>
                                 
                                 <input class="btn-reservar" type="submit" value="Reservar">
+                                <div id="total-price" style=" font-size: 1.5em; color: white; background-color: #a3a375; padding: 10px; border-radius: 2dvh;">
+                                Total: R$ <span id="total-preco">0.00</span>
+                            </div>
                             </form>
+                            
+                            
                         </div>
                     
                         
@@ -104,4 +109,30 @@
     <?php include "secoes/rodape.php"?>
 
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    const totalPreco = document.getElementById('total-preco');
+    const precoPorNoite = <?php echo $imovel->preco; ?>;
+
+    function calculateTotalPrice() {
+        const checkinDate = new Date(checkin.value);
+        const checkoutDate = new Date(checkout.value);
+
+        if (checkinDate && checkoutDate && checkinDate < checkoutDate) {
+            const timeDifference = checkoutDate - checkinDate;
+            const daysDifference = timeDifference / (1000 * 3600 * 24);
+            const totalPrice = daysDifference * precoPorNoite;
+            totalPreco.textContent = totalPrice.toFixed(2);
+        } else {
+            totalPreco.textContent = '0.00';
+        }
+    }
+
+    checkin.addEventListener('change', calculateTotalPrice);
+    checkout.addEventListener('change', calculateTotalPrice);
+});
+
+</script>
 </html>
