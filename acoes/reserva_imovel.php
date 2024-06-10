@@ -1,8 +1,7 @@
 <?php
 include 'conexao.php';
 
-// Verifica se o usuário está logado
-session_start(); // Inicia a sessão se ainda não estiver iniciada
+session_start(); 
 if (!isset($_SESSION['id_usuario'])) {
     echo "<script>
             alert('Usuário não está logado.');
@@ -11,7 +10,6 @@ if (!isset($_SESSION['id_usuario'])) {
     exit();
 }
 
-// Obtém os dados da solicitação
 $id_imovel = $_REQUEST['id_imovel'];
 $num_hospedes = $_REQUEST['num_hospedes'];
 $id_usuario = $_SESSION['id_usuario'];
@@ -19,7 +17,6 @@ $data_checkin = $_REQUEST['checkin'];
 $data_checkout = $_REQUEST['checkout'];
 
 try {
-    // Verifica se já existe uma reserva para o imóvel na data especificada
     $stmt = $conexao->prepare("
         SELECT COUNT(*) AS total
         FROM reserva
@@ -34,15 +31,12 @@ try {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result['total'] > 0) {
-        // Já existe uma reserva para o imóvel na data especificada
         echo "<script>
                 alert('Já existe uma reserva para o imóvel na data especificada.');
                 window.history.back(); // Volta para a página anterior
               </script>";
         exit();
     } else {
-        // Não existe uma reserva para o imóvel na data especificada
-        // Insere a nova reserva no banco de dados
         $sql = "INSERT INTO reserva (id_usuario, id_imovel, data_checkin, data_checkout, num_hospedes) 
                 VALUES (:id_usuario, :id_imovel, :data_checkin, :data_checkout, :num_hospedes)";
         $stmt = $conexao->prepare($sql);

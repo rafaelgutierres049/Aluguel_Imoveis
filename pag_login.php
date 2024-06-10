@@ -30,7 +30,7 @@
 
                                         <input class="botao_secundario" type="submit" value="Entrar">
                                     </form><br>
-                                        <a href="">Esqueci minha senha</a><br>
+                                        <a href="alterar_senha.php">Esqueci minha senha</a><br>
                                         <a href="cadastre.php">Cadastre-se</a>
                                 </div>
                         

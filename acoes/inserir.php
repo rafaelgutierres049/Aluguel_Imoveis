@@ -10,17 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $num_quartos = $_POST['num_quartos'];
     $num_hospedes = $_POST['num_hospedes'];
 
-    // Verifica se o arquivo foi enviado e não houve erro
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['imagem']['tmp_name'];
         $fileName = $_FILES['imagem']['name'];
         $fileSize = $_FILES['imagem']['size'];
         $fileType = $_FILES['imagem']['type'];
         
-        // Lê o conteúdo do arquivo
         $imageData = file_get_contents($fileTmpPath);
         
-        // Insere os dados no banco de dados
         $sql = "INSERT INTO imovel (titulo, descricao, localizacao, preco, num_quartos, num_hospedes, imagem, id_usuario) 
                 VALUES (:titulo, :descricao, :localizacao, :preco, :num_quartos, :num_hospedes, :imagem, :id_usuario)";
         $stmt = $conexao->prepare($sql);

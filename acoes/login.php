@@ -19,13 +19,13 @@ if($usuario != null) {
     $_SESSION['nome_usuario'] = $usuario->nome;
     $_SESSION['login_usuario'] = $usuario->email;
     $_SESSION['id_perfil'] = $usuario->id_perfil;
-    $_SESSION['id_usuario'] = $usuario->id_usuario; // Adiciona o ID do usuário à sessão
+    $_SESSION['id_usuario'] = $usuario->id_usuario;
     Header('Location: ../pag_cliente.php');
     exit();
 } else {
     echo "<script>
-            alert('Não foi possível localizar seu e-mail. Cadastre-se e tente novamente!');
-            window.location.href = '../cadastre.php';
+            alert('Email ou senha incorretos. Caso não possua login, cadastre-se e tente novamente!');
+            window.location.href = '../pag_login.php';
           </script>";
     exit();
 }
