@@ -12,11 +12,12 @@
     include 'acoes/conexao.php';
 
     $sql_reservas = "
-        SELECT reserva.id_reserva, reserva.data_checkin, reserva.data_checkout, reserva.num_hospedes, imovel.titulo, imovel.localizacao
-        FROM reserva
-        JOIN imovel ON reserva.id_imovel = imovel.id_imovel
-        WHERE reserva.id_usuario = :id_usuario
+    SELECT reserva.id_reserva, reserva.data_checkin, reserva.data_checkout, reserva.num_hospedes, imovel.id_imovel, imovel.titulo, imovel.localizacao
+    FROM reserva
+    JOIN imovel ON reserva.id_imovel = imovel.id_imovel
+    WHERE reserva.id_usuario = :id_usuario
     ";
+
     $consulta_reservas = $conexao->prepare($sql_reservas);
     $consulta_reservas->execute([':id_usuario' => $id_usuario]);
 
@@ -74,12 +75,12 @@
                 <div style="gap:2dvh;width:100%" class="centralizar_column slideIn">
                     <?php while ($linha = $consulta_reservas->fetch(PDO::FETCH_OBJ)) { ?>
                         <div class="centralizar_row item_reserva_cliente" >
-                            <div style="width:33%;text-align:center">
-                                <h3>
-                                    <?php echo htmlspecialchars($linha->titulo); ?>
-                                </h3>
-                            </div>
-                            
+                            <a style="width:33%" href="reserva.php?id=<?php echo $linha->id_imovel; ?>">                                <div style="width:100%;text-align:center">
+                                    <h3>
+                                        <?php echo htmlspecialchars($linha->titulo); ?>
+                                    </h3>
+                                </div>
+                            </a>
                             <div class="centralizar_row" style="gap:4dvw;width:100%">
                                 <h4><?php echo htmlspecialchars($linha->localizacao); ?></h4>
                                 <h4><?php echo (new DateTime($linha->data_checkin))->format('d/m/Y'); ?> - <?php echo (new DateTime($linha->data_checkout))->format('d/m/Y'); ?></h4>                                

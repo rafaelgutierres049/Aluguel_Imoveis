@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['id_usuario'])) {
     echo "<script>
             alert('Usuário não está logado.');
-            window.location.href = '../login.php'; // Redireciona para a página de login
+            window.location.href = '../pag_login.php';
           </script>";
     exit();
 }
@@ -49,7 +49,7 @@ try {
 
         echo "<script>
                 alert('Reserva realizada com sucesso.');
-                window.history.back(); // Volta para a página anterior 
+                window.history.back();
               </script>";
     }
 } catch(PDOException $e) {
